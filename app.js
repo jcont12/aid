@@ -8,11 +8,32 @@ const connection = mysql.createConnection({
   password: 'Databasepwd1.',
   database: 'test'
 })
-
-connection.connect((err) => {
- if (err) throw err;
- console.log('Connected!');
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
+const operatorsAliases = {
+  $gt: Op.gt
+}
+const sequelize = new Sequelize('test','admin','Databasepwd1.', {
+  host: 'localhost',
+  port: 3306,
+  dialect: 'mysql',
+  operatorsAliases
 });
+
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log('Connection succesfully established');
+  })
+  .catch((err) => {
+    console.log('There is a connection in ERROR');
+  });
+
+// connection.connect((err) => {
+//  if (err) throw err;
+//  console.log('Connected!');
+// });
+
 
 
 // Init app
@@ -28,6 +49,7 @@ app.set('view engine','ejs')
 app.get('/',(req,res) => {
   res.render('index', {
     title:'Welcome to Aidup!!'
+
   });
 })
 
@@ -42,6 +64,6 @@ app.listen(3000,() => {
 })
 
 // Ends database connection
-connection.end((err) => {
-  console.log('Connection ended. Have a good day!')
-});
+// connection.end((err) => {
+//   console.log('Connection ended. Have a good day!')
+// });

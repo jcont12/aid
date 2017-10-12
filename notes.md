@@ -21,3 +21,7 @@
 11.- Make sure Mysql is installed in the computer you are working in. Once installation is complete make sure you memorize the user and password created for the database. When accessing the database from the command line, type mysql -u username -p which will prompt for db password. (IN CASE OF WINDOWS - mysql command might not work, use this video https://www.youtube.com/watch?v=ZO9g5JTyvQY)
 
 12.- Cheat sheet for using MySQL from command line: https://gist.github.com/hofmannsven/9164408
+
+13.- Connecting MySQL to Node.js - https://www.sitepoint.com/using-node-mysql-javascript-client/
+
+14.- The equivalent for ActiveRecord in Node.js is SEQUELIZE (http://docs.sequelizejs.com/manual/installation/getting-started). Make sure to install mysql2 as well. We have to require sequelize, and OP(weird thing that throws an error).
