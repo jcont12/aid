@@ -1,15 +1,15 @@
 const express = require('express');
 const path = require('path');
 const ejs = require('ejs');
-const mysql = require('mysql');
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: '',
-  password: 'password',
-  database: ''
-})
+// const mysql = require('mysql');
+// const connection = mysql.createConnection({
+//   host: 'localhost',
+//   user: '',
+//   password: 'password',
+//   database: ''
+// })
 
-connection.connect();
+// connection.connect();
 //Init app
 const app = express();
 
