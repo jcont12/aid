@@ -1,16 +1,21 @@
 const express = require('express');
 const path = require('path');
 const ejs = require('ejs');
-// const mysql = require('mysql');
-// const connection = mysql.createConnection({
-//   host: 'localhost',
-//   user: '',
-//   password: 'password',
-//   database: ''
-// })
+const mysql = require('mysql');
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'admin',
+  password: 'Databasepwd1.',
+  database: 'test'
+})
 
-// connection.connect();
-//Init app
+connection.connect((err) => {
+ if (err) throw err;
+ console.log('Connected!');
+});
+
+
+// Init app
 const app = express();
 
 //Load view engine
@@ -35,3 +40,8 @@ app.get('/users/new',(req,res) => {
 app.listen(3000,() => {
   console.log('server started on port 3000')
 })
+
+// Ends database connection
+connection.end((err) => {
+  console.log('Connection ended. Have a good day!')
+});

@@ -17,3 +17,7 @@
 9.- Decided to change view files from .html to .ejs because there is more documentation and I can actually use the <% include filepath %> to render partials
 
 10.- Remember to npm install mysql in order to require mysql in your main.js file
+
+11.- Make sure Mysql is installed in the computer you are working in. Once installation is complete make sure you memorize the user and password created for the database. When accessing the database from the command line, type mysql -u username -p which will prompt for db password. (IN CASE OF WINDOWS - mysql command might not work, use this video https://www.youtube.com/watch?v=ZO9g5JTyvQY)
+
+12.- Cheat sheet for using MySQL from command line: https://gist.github.com/hofmannsven/9164408
