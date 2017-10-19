@@ -27,3 +27,5 @@
 14.- The equivalent for ActiveRecord in Node.js is SEQUELIZE (http://docs.sequelizejs.com/manual/installation/getting-started). Make sure to install mysql2 as well. We have to require sequelize, and OP(weird thing that throws an error).
 
 15. To begin with the project and create models, you have to install the sequelize cli (command line interface). Make sure you install it globally (npm install -g sequelize-cli). Then type sequelize init.
+
+16.- Requiring a variable in the main app.js file points to the whole file, therefore if you want to export more than one module (aka variable) from the file you have to create an object to import (require) in the main file and access its variables through the hashmap that was created.
