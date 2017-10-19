@@ -25,3 +25,5 @@
 13.- Connecting MySQL to Node.js - https://www.sitepoint.com/using-node-mysql-javascript-client/
 
 14.- The equivalent for ActiveRecord in Node.js is SEQUELIZE (http://docs.sequelizejs.com/manual/installation/getting-started). Make sure to install mysql2 as well. We have to require sequelize, and OP(weird thing that throws an error).
+
+15. To begin with the project and create models, you have to install the sequelize cli (command line interface). Make sure you install it globally (npm install -g sequelize-cli). Then type sequelize init.

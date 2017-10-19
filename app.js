@@ -1,6 +1,8 @@
 const express = require('express');
 const path = require('path');
 const ejs = require('ejs');
+const main = require('./controller/main');
+const newUser = require('./controller/users');
 const mysql = require('mysql');
 const connection = mysql.createConnection({
   host: 'localhost',
@@ -20,20 +22,12 @@ const sequelize = new Sequelize('test','admin','Databasepwd1.', {
   operatorsAliases
 });
 
-sequelize
-  .authenticate()
-  .then(() => {
+sequelize.authenticate().then(() => {
     console.log('Connection succesfully established');
   })
   .catch((err) => {
     console.log('There is a connection in ERROR');
   });
-
-// connection.connect((err) => {
-//  if (err) throw err;
-//  console.log('Connected!');
-// });
-
 
 
 // Init app
@@ -45,18 +39,11 @@ app.set('views',[path.join(__dirname,'views'),
                  path.join(__dirname,'views/users/')]);
 app.set('view engine','ejs')
 
-//Home route
-app.get('/',(req,res) => {
-  res.render('index', {
-    title:'Welcome to Aidup!!'
-
-  });
-})
+// Home route
+app.get('/', main);
 
 // Add new user
-app.get('/users/new',(req,res) => {
-  res.render('new')
-});
+app.get('/users/new', newUser);
 
 //Start Server
 app.listen(3000,() => {
