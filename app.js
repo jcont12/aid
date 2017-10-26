@@ -37,19 +37,6 @@ sequelize.authenticate().then(() => {
 const app = express();
 
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-app.use(express.static(__dirname + "/public"));
-
-var wiki = require('./wiki.js');
-// ...
-app.use('/wiki', wiki);
-
-
-
-
 //Load view engine
 app.engine('ejs', ejs.renderFile);
 app.set('views',[path.join(__dirname,'views'),
