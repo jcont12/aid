@@ -1,11 +1,9 @@
 const express = require('express');
 const bodyParser = require("body-parser");
-
-
 const path = require('path');
 const ejs = require('ejs');
 const main = require('./controller/main');
-const user = require('./controller/users.js');
+const user = require('./controller/users');
 const mysql = require('mysql');
 const connection = mysql.createConnection({
   host: 'localhost',
@@ -44,7 +42,7 @@ app.set('views',[path.join(__dirname,'views'),
 app.set('view engine','ejs')
 
 // Home route
-app.get('/', main);
+app.use('/', main);
 
 // Add new user
 // app.get('/users/new', user.newUser);

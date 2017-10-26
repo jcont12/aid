@@ -1,8 +1,11 @@
+const express = require('express');
+const router = express.Router();
 
-const main = (req, res) => {
+// Landing page
+router.get('/',(req, res) => {
   res.render('index', {
     title:'Welcome to Aidup!!'
   });
-};
+});
 
-module.exports = main;
+module.exports = router;

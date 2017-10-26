@@ -29,3 +29,5 @@
 15. To begin with the project and create models, you have to install the sequelize cli (command line interface). Make sure you install it globally (npm install -g sequelize-cli). Then type sequelize init.
 
 16.- Requiring a variable in the main app.js file points to the whole file, therefore if you want to export more than one module (aka variable) from the file you have to create an object to import (require) in the main file and access its variables through the hashmap that was created.
+
+17.- There are MANY different ways to render and organize youre views~routes, we have decided to use Router() instead of exporting modules with an object that contains many different variables...(view users.js controller for reference)
