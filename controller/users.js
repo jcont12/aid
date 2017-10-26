@@ -1,20 +1,20 @@
-const models = require("../models").User;
+// const models = require("../models").User;
 
-const newUser = (req, res) => {
-  res.render('new',{
-  })
-};
+const express = require('express');
+const router = express.Router();
 
-const createUser = (req, res) => {
-      return User
-      .create({
-        firstName: req.body.firstName
-      })
-      .then(user => res.status(201).send(user))
-      .catch(error => res.status(400).send(error))
-  }
+// new user route
+router.get('/new',(req, res) => {
+  res.render('users/new.ejs', { root:__dirname + '/../views'});
+});
 
-module.exports = {
-  newUser: newUser,
-  createUser: createUser
-}
+
+module.exports = router;
+
+
+
+
+// {
+//   newUser: newUser,
+  // createUser: createUser
+// }

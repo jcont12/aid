@@ -1,8 +1,11 @@
 const express = require('express');
+const bodyParser = require("body-parser");
+
+
 const path = require('path');
 const ejs = require('ejs');
 const main = require('./controller/main');
-const user = require('./controller/users');
+const user = require('./controller/users.js');
 const mysql = require('mysql');
 const connection = mysql.createConnection({
   host: 'localhost',
@@ -33,6 +36,20 @@ sequelize.authenticate().then(() => {
 // Init app
 const app = express();
 
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(express.static(__dirname + "/public"));
+
+var wiki = require('./wiki.js');
+// ...
+app.use('/wiki', wiki);
+
+
+
+
 //Load view engine
 app.engine('ejs', ejs.renderFile);
 app.set('views',[path.join(__dirname,'views'),
@@ -43,10 +60,10 @@ app.set('view engine','ejs')
 app.get('/', main);
 
 // Add new user
-app.get('/users/new', user.newUser);
-
+// app.get('/users/new', user.newUser);
+app.use('/users', user)
 // Create new user
-app.post('/users', user.createUser);
+// app.post('/users', user.createUser);
 
 //Start Server
 app.listen(3000,() => {
