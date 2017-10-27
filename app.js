@@ -1,5 +1,6 @@
 const express = require('express');
-const bodyParser = require("body-parser");
+const bodyParser = require('body-parser');
+const expressValidator = require('express-validator');
 const path = require('path');
 const ejs = require('ejs');
 const main = require('./controller/main');
@@ -23,6 +24,8 @@ const sequelize = new Sequelize('test','admin','Databasepwd1.', {
   operatorsAliases
 });
 
+
+
 sequelize.authenticate().then(() => {
     console.log('Connection succesfully established');
   })
@@ -34,6 +37,9 @@ sequelize.authenticate().then(() => {
 // Init app
 const app = express();
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(expressValidator());
 
 //Load view engine
 app.engine('ejs', ejs.renderFile);
@@ -46,6 +52,8 @@ app.use('/', main);
 
 // Add new user
 // app.get('/users/new', user.newUser);
+ // Add this after the bodyParser middlewares!
+
 app.use('/users', user)
 // Create new user
 // app.post('/users', user.createUser);
@@ -55,8 +63,7 @@ app.listen(3000,() => {
   console.log('server started on port 3000')
 })
 
-console.log(user.newUser);
-console.log(user.createUser);
+
 // Ends database connection
 // connection.end((err) => {
 //   console.log('Connection ended. Have a good day!')

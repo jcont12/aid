@@ -8,6 +8,13 @@ router.get('/new',(req, res) => {
   res.render('users/new.ejs');
 });
 
+//  Create user router
+router.post('', (req,res) => {
+  const firstName = req.body.firstname;
+  const bio = req.body.bio;
+  res.send(`Ive got a Post with ${firstName}`)
+})
+
 
 module.exports = router;
 
